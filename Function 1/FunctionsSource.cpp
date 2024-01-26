@@ -1,3 +1,9 @@
+// Valan Adan
+// Date: 01/24/24
+// Class: CSCI 2380 02P
+// Semester: Spring 2024
+// Instructor: Marzieh Ayati
+
 #include <iostream> // Used for cin and cout
 using namespace std; // making life easier so taht we do not need to use std::cin , std::cout, etc.
 
@@ -9,7 +15,12 @@ using namespace std; // making life easier so taht we do not need to use std::ci
 
 //****************To Do********************
 int locateSmallest(int array[], int start, int end) {
-
+	int smallest = array[start];
+	for (start; start < end; start++) {
+		if (smallest > array[start + 1])
+			smallest = array[start + 1];
+	}
+	return smallest;
 }
 
 //Write the function called locateIndexOfSmallest in the given interval such that
@@ -20,9 +31,16 @@ int locateSmallest(int array[], int start, int end) {
 
 //****************To Do********************
 int locateIndexOfSmallest(int array[], int start, int end) {
-
+	int smallInd = start;
+	int small = array[start];
+	for (start; start < end; start++) {
+		if (array[start + 1] < small) {
+			small = array[start + 1];
+			smallInd = start + 1;
+		}
+	}
+	return smallInd;
 }
-
 
 
 //Write the function called ReplaceVariable in the given interval such that
@@ -31,24 +49,23 @@ int locateIndexOfSmallest(int array[], int start, int end) {
 // function: Search in the array from given start to end index and replace the given target value with 1000
 
 //****************To Do********************
-
-
+void ReplaceVariable(int array[], int target, int start, int end) {
+	for (start; start < end; start++) {
+		if (array[start] == target)
+			array[start] = 1000;
+	}
+}
 
 
 //write a function called printArray to print out the elements of the give array
 //output: void
 //input: the array and its size
 //****************To Do********************
-
-
-
-
-
-
-
-
-
-
+void printArray(int array[], int size) {
+	for (int i = 0; i < size; i++) {
+		cout << array[i] << " ";
+	}
+}
 
 
 int main()
@@ -63,18 +80,13 @@ int main()
 	cout << "The smallest value is 20, your result is " << locateSmallest(myarray, 2, 8) << endl;
 	cout << "The smallest value is at the index 4, your result is " << locateIndexOfSmallest(myarray, 2, 8) << endl;
 
-
 	//****************To Do********************
 	//To Do: call ReplaceVariable on myarray to replace target between 3 to 7
-
-
+	ReplaceVariable(myarray, 40, 3, 7);
 
 	//To Do : call the printArray on myarray
 	//output should be: 16 3 77 1000 20 1000 44 40 90
-
-
-
-
+	printArray(myarray, 9);
 
 	return 0;
 }
