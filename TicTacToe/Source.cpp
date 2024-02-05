@@ -41,17 +41,17 @@ int main()
 	do
 	{
 		board.DrawBoard();
-		cout << "Row: ";
+		cout << "\nRow: ";
 		cin >> row;
-		cout << "Col: ";
+		cout << "\nCol: ";
 		cin >> col;
 
 		if (!board.PlaceMove(row, col))
-			cout << "Invalid Move" << endl;
+			cout << "\nInvalid Move" << endl;
 	} while (!board.GameOver());
 
 	board.DrawBoard();
-	cout << board.Winner() << " wins!" << endl;
+	cout << endl << board.Winner() << " wins!" << endl;
 
 
 	return 0;
